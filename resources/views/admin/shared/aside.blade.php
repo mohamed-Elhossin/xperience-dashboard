@@ -10,7 +10,7 @@
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-heading">Pages</li>
- 
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('profile.edit') }}">
@@ -18,33 +18,25 @@
                 <span>Profile</span>
             </a>
         </li><!-- End Profile Page Nav -->
-        <hr>
-        <li class="nav-heading  ">Hiring process <span class="badge bg-danger float-end">Soon</span> </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a class="nav-link collapsed" href="{{ route('pay-courses.index') }}">
                 <i class="bi bi-person"></i>
-                <span> Available jobs</span>
+                <span>Courses</span>
             </a>
-        </li>
+        </li><!-- End Profile Page Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a class="nav-link collapsed" href="{{ route('sections.index') }}">
                 <i class="bi bi-person"></i>
-                <span> Applicants </span>
+                <span>Section Courses </span>
             </a>
-        </li>
+        </li><!-- End Profile Page Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed">
+            <a class="nav-link collapsed" href="{{ route('section_contents.index') }}">
                 <i class="bi bi-person"></i>
-                <span> Interviews </span>
+                <span>Section Content</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed">
-                <i class="bi bi-person"></i>
-                <span> Final Stauts </span>
-            </a>
-        </li>
+        </li><!-- End Profile Page Nav -->
 
     </ul>
 

@@ -55,16 +55,5 @@ class User extends Authenticatable
     /**
      * Get the department associated with the user.
      */
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
-    }
-    /**
-     * Get the employees associated with the user.
-     */
-    public function employee()
-    {
-        return $this->hasOne(Employee::class);
-    }
-
+ 
 }
