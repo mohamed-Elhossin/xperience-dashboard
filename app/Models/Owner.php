@@ -1,21 +1,34 @@
 <?php
 
+
+// app/Models/Owner.php
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Owner extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    protected $table = 'owners';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'email_verified_at',
     ];
+
+    protected $dates = [
+        'email_verified_at',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+// app/Models/Owner.php
+public function employees()
+{
+    return $this->hasMany(Employee::class, 'owner_id');
+}
+
+
 }

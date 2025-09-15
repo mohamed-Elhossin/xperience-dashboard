@@ -6,7 +6,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PayCourseController;
 use App\Http\Controllers\SectionContentController;
-
+use App\Http\Controllers\FieldController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\RealController;
+use App\Http\Controllers\PartnerController;
+    use App\Http\Controllers\InstructorController;
 Route::get('/', function () {
     return view('auth.login');
 })->middleware("guest");
@@ -15,7 +20,8 @@ Route::get('/dashboard', function () {
 
     return view('admin.pages.index');
 })->middleware(['auth'])->name('dashboard');
-
+// user-type:employee
+// user-type:owner
 // -------------
 Route::middleware('auth')->group(function () {
 
@@ -51,6 +57,17 @@ Route::middleware('auth')->group(function () {
 
 
 
+
+Route::prefix('fields')->name('fields.')->group(function () {
+    Route::get('/',       [FieldController::class, 'index'])->name('index');
+    Route::get('/create', [FieldController::class, 'create'])->name('create');
+    Route::post('/',      [FieldController::class, 'store'])->name('store');
+    Route::get('/{field}', [FieldController::class, 'show'])->name('show');
+    Route::get('/{field}/edit', [FieldController::class, 'edit'])->name('edit');
+    Route::put('/{field}', [FieldController::class, 'update'])->name('update');
+    Route::delete('/{field}', [FieldController::class, 'destroy'])->name('destroy');
+});
+
     Route::prefix('section-contents')->name('section_contents.')->group(function () {
         Route::get('/',       [SectionContentController::class, 'index'])->name('index');
         Route::get('/create', [SectionContentController::class, 'create'])->name('create');
@@ -60,6 +77,64 @@ Route::middleware('auth')->group(function () {
         Route::put('/{sectionContent}', [SectionContentController::class, 'update'])->name('update');
         Route::delete('/{sectionContent}', [SectionContentController::class, 'destroy'])->name('destroy');
     });
+
+
+
+
+
+Route::prefix('employees')->name('employees.')->group(function () {
+    Route::get('/', [EmployeeController::class, 'index'])->name('index');
+    Route::get('/create', [EmployeeController::class, 'create'])->name('create');
+    Route::post('/', [EmployeeController::class, 'store'])->name('store');
+    Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
+    Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
+    Route::put('/{employee}', [EmployeeController::class, 'update'])->name('update');
+    Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('instructors')->name('instructors.')->group(function () {
+    Route::get('/',       [InstructorController::class, 'index'])->name('index');
+    Route::get('/create', [InstructorController::class, 'create'])->name('create');
+    Route::post('/',      [InstructorController::class, 'store'])->name('store');
+    Route::get('/{instructor}', [InstructorController::class, 'show'])->name('show');
+    Route::get('/{instructor}/edit', [InstructorController::class, 'edit'])->name('edit');
+    Route::put('/{instructor}', [InstructorController::class, 'update'])->name('update');
+    Route::delete('/{instructor}', [InstructorController::class, 'destroy'])->name('destroy');
+});
+
+
+Route::prefix('owners')->name('owners.')->group(function () {
+    Route::get('/',       [OwnerController::class, 'index'])->name('index');
+    Route::get('/create', [OwnerController::class, 'create'])->name('create');
+    Route::post('/',      [OwnerController::class, 'store'])->name('store');
+    Route::get('/{owner}', [OwnerController::class, 'show'])->name('show');
+    Route::get('/{owner}/edit', [OwnerController::class, 'edit'])->name('edit');
+    Route::put('/{owner}', [OwnerController::class, 'update'])->name('update');
+    Route::delete('/{owner}', [OwnerController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('reals')->name('reals.')->group(function () {
+    Route::get('/', [RealController::class, 'index'])->name('index');
+    Route::get('/create', [RealController::class, 'create'])->name('create');
+    Route::post('/', [RealController::class, 'store'])->name('store');
+    Route::get('/{real}', [RealController::class, 'show'])->name('show');
+    Route::get('/{real}/edit', [RealController::class, 'edit'])->name('edit');
+    Route::put('/{real}', [RealController::class, 'update'])->name('update');
+    Route::delete('/{real}', [RealController::class, 'destroy'])->name('destroy');
+});
+
+
+
+ Route::prefix('partner')->name('partners.')->group(function () {
+    Route::get('/', [PartnerController::class, 'index'])->name('index');
+    Route::get('/create', [PartnerController::class, 'create'])->name('create');
+    Route::post('/', [PartnerController::class, 'store'])->name('store');
+    Route::get('/{partner}', [PartnerController::class, 'show'])->name('show');
+    Route::get('/{partner}/edit', [PartnerController::class, 'edit'])->name('edit');
+    Route::put('/{partner}', [PartnerController::class, 'update'])->name('update');
+    Route::delete('/{partner}', [PartnerController::class, 'destroy'])->name('destroy');
+});
+
 });
 
 
