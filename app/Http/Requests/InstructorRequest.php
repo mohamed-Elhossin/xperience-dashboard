@@ -1,5 +1,4 @@
 <?php
-
 // app/Http/Requests/InstructorRequest.php
 namespace App\Http\Requests;
 
@@ -21,7 +20,8 @@ class InstructorRequest extends FormRequest
             ],
             'linkedIn' => 'required|url|max:500',
             'field_id' => 'required|exists:fields,id',
-            'cv'       => 'required|string',
+            'cv'       => $id ? 'nullable|file|mimes:pdf,doc,docx,txt|max:4096' : 'required|file|mimes:pdf,doc,docx,txt|max:4096',
         ];
     }
 }
+

@@ -11,7 +11,9 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RealController;
 use App\Http\Controllers\PartnerController;
-    use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ContactController;
 Route::get('/', function () {
     return view('auth.login');
 })->middleware("guest");
@@ -92,10 +94,12 @@ Route::prefix('employees')->name('employees.')->group(function () {
     Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
 });
 
-Route::prefix('instructors')->name('instructors.')->group(function () {
-    Route::get('/',       [InstructorController::class, 'index'])->name('index');
+
+Route::prefix('instructor')->name('instructors.')->group(function () {
+
+    Route::get('/', [InstructorController::class, 'index'])->name('index');
     Route::get('/create', [InstructorController::class, 'create'])->name('create');
-    Route::post('/',      [InstructorController::class, 'store'])->name('store');
+    Route::post('/', [InstructorController::class, 'store'])->name('store');
     Route::get('/{instructor}', [InstructorController::class, 'show'])->name('show');
     Route::get('/{instructor}/edit', [InstructorController::class, 'edit'])->name('edit');
     Route::put('/{instructor}', [InstructorController::class, 'update'])->name('update');
@@ -133,6 +137,31 @@ Route::prefix('reals')->name('reals.')->group(function () {
     Route::get('/{partner}/edit', [PartnerController::class, 'edit'])->name('edit');
     Route::put('/{partner}', [PartnerController::class, 'update'])->name('update');
     Route::delete('/{partner}', [PartnerController::class, 'destroy'])->name('destroy');
+});
+
+
+
+
+Route::prefix('contacts')->name('contacts.')->group(function () {
+    Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::get('/create', [ContactController::class, 'create'])->name('create');
+    Route::post('/', [ContactController::class, 'store'])->name('store');
+    Route::get('/{contact}', [ContactController::class, 'show'])->name('show');
+    Route::get('/{contact}/edit', [ContactController::class, 'edit'])->name('edit');
+    Route::put('/{contact}', [ContactController::class, 'update'])->name('update');
+    Route::delete('/{contact}', [ContactController::class, 'destroy'])->name('destroy');
+});
+
+
+
+Route::prefix('feedbacks')->name('feedback.')->group(function () {
+    Route::get('/', [FeedbackController::class, 'index'])->name('index');
+    Route::get('/create', [FeedbackController::class, 'create'])->name('create');
+    Route::post('/', [FeedbackController::class, 'store'])->name('store');
+    Route::get('/{feedback}', [FeedbackController::class, 'show'])->name('show');
+    Route::get('/{feedback}/edit', [FeedbackController::class, 'edit'])->name('edit');
+    Route::put('/{feedback}', [FeedbackController::class, 'update'])->name('update');
+    Route::delete('/{feedback}', [FeedbackController::class, 'destroy'])->name('destroy');
 });
 
 });

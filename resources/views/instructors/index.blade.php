@@ -11,7 +11,7 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <a href="{{ route('instructors.create') }}" class="btn btn-success mb-3">Add Instructor</a>
+        <a href="{{ route('instructors.create') }}" class="btn btn-success btn-sm mb-3">Add Instructor</a>
         <form method="GET" class="mb-3">
             <input type="search" name="search" placeholder="Search name or email..." class="form-control" value="{{ $search }}">
         </form>
@@ -21,6 +21,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
                     <th>LinkedIn</th>
                     <th>Field</th>
                     <th class="text-end">Actions</th>
@@ -31,6 +32,7 @@
                 <tr>
                     <td>{{ $inst->name }}</td>
                     <td>{{ $inst->email }}</td>
+                    <td>{{ $inst->phone }}</td>
                     <td>
                         <a href="{{ $inst->linkedIn }}" target="_blank" class="text-primary text-decoration-underline">Profile</a>
                     </td>

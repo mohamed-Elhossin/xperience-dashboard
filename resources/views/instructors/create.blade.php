@@ -12,13 +12,8 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <a href="{{ route('instructors.index') }}" class="btn btn-secondary mb-3">Back to Instructors</a>
-        @if ($errors->any())
-            <div class="alert alert-danger"><ul>
-                @foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach
-            </ul></div>
-        @endif
-        <form method="POST" action="{{ route('instructors.store') }}">
+        <a href="{{ route('instructors.index') }}" class="btn btn-secondary btn-sm mb-3">Back to Instructors</a>
+        <form method="POST" action="{{ route('instructors.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 form-group">
                 <label>Name</label>
@@ -53,11 +48,11 @@
                 @error('field_id')<div class="alert alert-warning mt-1">{{ $message }}</div>@enderror
             </div>
             <div class="mb-3 form-group">
-                <label>CV (Text or URL)</label>
-                <textarea name="cv" class="form-control @error('cv') is-invalid @enderror">{{ old('cv') }}</textarea>
+                <label>CV File</label>
+                <input type="file" name="cv" class="form-control @error('cv') is-invalid @enderror">
                 @error('cv')<div class="alert alert-warning mt-1">{{ $message }}</div>@enderror
             </div>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success btn-sm">Add</button>
         </form>
     </div>
 </div>

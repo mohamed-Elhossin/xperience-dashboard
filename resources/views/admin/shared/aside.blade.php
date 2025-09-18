@@ -78,6 +78,22 @@
                 </span>
             </a>
         </li><!-- End Profile Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('contacts.index') }}">
+                <i class="bi bi-person"></i>
+                <span>
+                    Contacts
+                </span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+                <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('feedback.index') }}">
+                <i class="bi bi-person"></i>
+                <span>
+                    Feedback
+                </span>
+            </a>
+        </li><!-- End Profile Page Nav -->
     </ul>
 
 </aside><!-- End Sidebar-->

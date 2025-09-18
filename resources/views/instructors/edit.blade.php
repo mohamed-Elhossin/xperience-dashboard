@@ -12,13 +12,8 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <a href="{{ route('instructors.index') }}" class="btn btn-secondary mb-3">Back to Instructors</a>
-        @if ($errors->any())
-            <div class="alert alert-danger"><ul>
-                @foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach
-            </ul></div>
-        @endif
-        <form method="POST" action="{{ route('instructors.update', $instructor->id) }}">
+        <a href="{{ route('instructors.index') }}" class="btn btn-secondary btn-sm mb-3">Back to Instructors</a>
+        <form method="POST" action="{{ route('instructors.update', $instructor->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3 form-group">
@@ -54,11 +49,16 @@
                 @error('field_id')<div class="alert alert-warning mt-1">{{ $message }}</div>@enderror
             </div>
             <div class="mb-3 form-group">
-                <label>CV (Text or URL)</label>
-                <textarea name="cv" class="form-control @error('cv') is-invalid @enderror">{{ old('cv', $instructor->cv) }}</textarea>
+                <label>CV File</label>
+                @if($instructor->cv)
+                    <a href="{{ asset('instructors/cv/' . $instructor->cv) }}" target="_blank" class="d-block mb-2 text-decoration-underline text-primary">
+                        Download Current CV
+                    </a>
+                @endif
+                <input type="file" name="cv" class="form-control @error('cv') is-invalid @enderror">
                 @error('cv')<div class="alert alert-warning mt-1">{{ $message }}</div>@enderror
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
         </form>
     </div>
 </div>
